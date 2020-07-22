@@ -7,7 +7,7 @@
 <body>
 
 <center><h1>add form</h1>
-    <form action="#" th:action="@{admin/add}" th:object="${user}" method="post" align="center">
+    <form action="#" th:action="@{/admin/add}" th:object="${user}" method="post" align="center">
         <p>Name: <input type="text" th:field="*{name}"/></p>
         <p>City: <input type="text" th:field="*{city}"/></p>
         <p>Email: <input type="text" th:field="*{email}"/></p>

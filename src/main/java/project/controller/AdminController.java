@@ -6,8 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import project.model.Role;
 import project.model.User;
 import project.service.UserService;
+
+import java.util.Collections;
 
 @Controller
 @RequestMapping("/admin/")
@@ -17,6 +20,7 @@ public class AdminController {
 
     @PostMapping("/add")
     public String add(User user, Model model) {
+        user.setRoles(Collections.singleton(new Role("ADMIN")));
         userService.add(user);
         model.addAttribute("listz", userService.listUsers());
         return "list";

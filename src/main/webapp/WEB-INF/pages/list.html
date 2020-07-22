@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Person List</title>
 </head>
 <body>
@@ -9,12 +9,13 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"></input>
 </form>
-<br/><h1>Person List</h1>
-<a href="admin/add">Add Person</a>
+<br/>
+<h1>Person List</h1>
+<a href="/admin/add">Add Person</a>
 
 <br/><br/>
 <div>
-    <table  cellpadding="10" border="1" width="80%" align="center" bgcolor="#ffcc00">
+    <table cellpadding="10" border="1" width="80%" align="center" bgcolor="#ffcc00">
         <tr>
             <th>Name</th>
             <th>City</th>
@@ -23,7 +24,7 @@
             <th>Roles</th>
             <th>...</th>
         </tr>
-        <tr th:each ="person : ${listz}">
+        <tr th:each="person : ${listz}">
             <td th:utext="${person.getName()}">...</td>
             <td th:utext="${person.getCity()}">...</td>
             <td th:utext="${person.getEmail()}">...</td>

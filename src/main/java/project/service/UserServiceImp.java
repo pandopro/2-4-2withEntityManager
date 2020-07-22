@@ -2,6 +2,7 @@ package project.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ public class UserServiceImp implements UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
     @Autowired
+    @Qualifier("userEntityManager")
     private UserDAO userDao;
 
     public UserServiceImp() {
@@ -54,6 +56,8 @@ public class UserServiceImp implements UserService {
     @Override
     public boolean edit(long id, User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User olduser = getUser(id);
+        user.setRoles(olduser.getRoles());
         return this.userDao.edit(id, user);
     }
 
